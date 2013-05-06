@@ -1,6 +1,59 @@
 = csv-tool
 
-Description goes here.
+csv-tool is a simple gem that makes it easy to manipulate .csv files in ruby (in particular using something like pry). 
+
+Why? Because Excel's built in "scripting" sucks. There are so many simple things I'd like to do with a spread sheet which just feel clunky using the excel commans. 
+
+Ruby is much nicer and I'd much rather do data hacking using ruby + pry than with excel. 
+
+= What it does
+
+The gem reads in the CSV file expecting the first line to include the headers. Each hearder
+is turned into a symbol.
+
+Each line is the read in and converted to hash of :header => value which is added to an array. 
+
+In the end the csv file below will look like:
+
+    [ {:Name => 'David', :Age => '31', :Location => 'Brisbane'},
+      {:Name => 'Ian', :Age => '45', :Location => 'Adelaide'}, ... ]
+
+Admitedly this is fairly inefficient, however, this is a hacky tool designed for hacky jobs :)
+
+= Example
+
+Let's say we have some very simple data: test.csv
+
+    Name, Age, Location
+    David, 31, Brisbane
+    Ian, 45, Adelaide
+    Tom, 22, Melbourne
+    Simon, 18, Brisbane
+
+To use this with csv-tool:
+
+    require 'csv-tool'
+    data = Csv-Tool.new 'test.csv'
+
+We can now do things like:
+    data.select{ |d| d[:Age].to_i > 15 }
+    
+There also a couple of helper methods:
+
+    data.columns(:Name, :Location)
+    [ {:Name => 'David', :Location => 'Brisbane'},
+      {:Name => 'Ian', :Location => 'Melbourne'} ... ]
+
+    data.headers
+    [:Name, :Age, :Location]
+   
+It's all pretty simply but you can do nice things like:
+
+   data.select { |d| d[:Age].to_i > 15 }.columns(:Location).uniq
+
+to get a list of the locations where people are above certain age. 
+
+Finally this can be made even better if you combine with the descriptive-statistics gem.
 
 == Contributing to csv-tool
  
