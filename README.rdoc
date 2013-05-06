@@ -11,14 +11,14 @@ Ruby is much nicer and I'd much rather do data hacking using ruby + pry than wit
 The gem reads in the CSV file expecting the first line to include the headers. Each hearder
 is turned into a symbol.
 
-Each line is the read in and converted to hash of :header => value which is added to an array. 
+Each line is then read in and converted into a hash of :header => value which is added to an array. 
 
 In the end the csv file below will look like:
 
     [ {:Name => 'David', :Age => '31', :Location => 'Brisbane'},
       {:Name => 'Ian', :Age => '45', :Location => 'Adelaide'}, ... ]
 
-Admitedly this is fairly inefficient, however, this is a hacky tool designed for hacky jobs :)
+Admittedly this is fairly inefficient, however, this is a hacky tool designed for hacky jobs :)
 
 = Example
 
