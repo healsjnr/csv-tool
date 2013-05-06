@@ -17,8 +17,8 @@ Jeweler::Tasks.new do |gem|
   gem.name = "csv-tool"
   gem.homepage = "http://github.com/healsjnr/csv-tool"
   gem.license = "MIT"
-  gem.summary = %Q{TODO: one-line summary of your gem}
-  gem.description = %Q{TODO: longer description of your gem}
+  gem.summary = %Q{A simple gem to allow csv manipulation with ruby.}
+  gem.description = %Q{Sick of using Excel's substandard "scripting"? This is a simple gem to load csv's into ruby and then edit directly.}
   gem.email = "healsjnr@gmail.com"
   gem.authors = ["HealsJnr"]
   # dependencies defined in Gemfile
@@ -30,14 +30,6 @@ Rake::TestTask.new(:test) do |test|
   test.libs << 'lib' << 'test'
   test.pattern = 'test/**/test_*.rb'
   test.verbose = true
-end
-
-require 'rcov/rcovtask'
-Rcov::RcovTask.new do |test|
-  test.libs << 'test'
-  test.pattern = 'test/**/test_*.rb'
-  test.verbose = true
-  test.rcov_opts << '--exclude "gems/*"'
 end
 
 task :default => :test
