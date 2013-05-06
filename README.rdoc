@@ -35,24 +35,22 @@ To use this with csv-tool:
     require 'csv-tool'
     data = Csv-Tool.new 'test.csv'
 
-We can now do things like:
+We can now do things like the below which returns all rows with an age > 15:
     data.select{ |d| d[:Age].to_i > 15 }
+
     
-There also a couple of helper methods:
+There also a couple of helper methods. 
+
+data.columns will return all rows, but only with columns specified. 
 
     data.columns(:Name, :Location)
     [ {:Name => 'David', :Location => 'Brisbane'},
       {:Name => 'Ian', :Location => 'Melbourne'} ... ]
 
+data.headers returns the list of headers found when loading the csv file.
     data.headers
     [:Name, :Age, :Location]
    
-It's all pretty simply but you can do nice things like:
-
-   data.select { |d| d[:Age].to_i > 15 }.columns(:Location).uniq
-
-to get a list of the locations where people are above certain age. 
-
 Finally this can be made even better if you combine with the descriptive-statistics gem.
 
 == Contributing to csv-tool
